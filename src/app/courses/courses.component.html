@@ -11,7 +11,6 @@
                 <mat-list-item *ngFor="let course of courses" (click)="selectCourse(course)">
                     <h3 matLine>{{ course.title }}</h3>
                     <p matLine>{{ course.description }}</p>
-                    <p matLine>{{ course.description }}</p>
                     <button mat-icon-button color="warn" (click)="deleteCourse(course.id);$event.stopImmediatePropagation()">
                         <mat-icon>delete</mat-icon>
                     </button>
@@ -29,7 +28,7 @@
                     <ng-template #noSelection>Select Course</ng-template>
                 </mat-card-title>
             </mat-card-header>
-            <form #form="ngForm" (submit)="saveCourse()">
+            <form #form="ngForm" (submit)="saveCourse(selectedCourse)">
                 <mat-card-content>
                     <mat-form-field>
                         <input matInput placeholder="Title" [(ngModel)]="selectedCourse.title" type="text" name="title" required>
